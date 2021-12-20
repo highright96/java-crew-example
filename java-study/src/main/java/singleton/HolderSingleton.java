@@ -13,12 +13,14 @@ static final 로 기술할 경우 해당 클래스가 로드될 때 사용하지
 
 public class HolderSingleton {
 
-    private static class Holder {
-
-        public static final HolderSingleton instance = new HolderSingleton();
+    private HolderSingleton() {
     }
 
     public static HolderSingleton getInstance() {
         return Holder.instance;
+    }
+
+    private static class Holder {
+        public static final HolderSingleton instance = new HolderSingleton();
     }
 }

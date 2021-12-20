@@ -9,6 +9,9 @@ public class LazySingleton {
 
     private volatile static LazySingleton sLazySingleton;
 
+    private LazySingleton() {
+    }
+
     public static LazySingleton getInstance() {
         if (sLazySingleton == null) {
             synchronized (LazySingleton.class) {
