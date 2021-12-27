@@ -1,4 +1,4 @@
-package Synchronization;
+package synchronization;
 
 import java.time.LocalDateTime;
 import java.util.concurrent.TimeUnit;

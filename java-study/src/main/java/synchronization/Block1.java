@@ -1,15 +1,13 @@
-package Synchronization;
+package synchronization;
 
 import java.time.LocalDateTime;
 import java.util.concurrent.TimeUnit;
 
-public class Block2 {
-
-    private final Object o1 = new Object();
-    private final Object o2 = new Object();
+public class Block1 {
 
     public static void main(String[] args) {
-        Block2 block = new Block2();
+
+        Block1 block = new Block1();
 
         Thread thread1 = new Thread(() -> {
             System.out.println("스레드1 시작 " + LocalDateTime.now());
@@ -27,7 +25,7 @@ public class Block2 {
     }
 
     private void syncBlockMethod1(String msg) {
-        synchronized (o1) {
+        synchronized (this) {
             System.out.println(msg + "의 syncBlockMethod1 실행중" + LocalDateTime.now());
             try {
                 TimeUnit.SECONDS.sleep(5);
@@ -38,7 +36,7 @@ public class Block2 {
     }
 
     private void syncBlockMethod2(String msg) {
-        synchronized (o2) {
+        synchronized (this) {
             System.out.println(msg + "의 syncBlockMethod2 실행중" + LocalDateTime.now());
             try {
                 TimeUnit.SECONDS.sleep(5);
