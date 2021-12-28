@@ -77,7 +77,7 @@ public class NPlusOneTest {
         for (Member member : members) {
             System.out.println(member.getOrders().size());
         }
-        assertThat(members.size()).isEqualTo(5);
+        assertThat(members.size()).isEqualTo(25);
     }
 
     @Test
@@ -89,7 +89,7 @@ public class NPlusOneTest {
         for (Member member : members) {
             System.out.println(member.getOrders().size());
         }
-        assertThat(members.size()).isEqualTo(5);
+        assertThat(members.size()).isEqualTo(25);
     }
 
     /*
@@ -105,8 +105,22 @@ public class NPlusOneTest {
     @Transactional
     void 지연_로딩_N1_쿼리_엔티티_그래프와_페치_조인_비교_테스트() {
         em.clear();
-        memberRepository.findAllJoinFetch();
-        memberRepository.findAllEntityGraph();
+        List<Member> members1 = memberRepository.findAllJoinFetch();
+        List<Member> members2 = memberRepository.findAllEntityGraph();
 
+        assertThat(members1.size()).isEqualTo(25);
+        assertThat(members2.size()).isEqualTo(25);
+    }
+
+    @Test
+    @Transactional
+    void 배치_사이즈_N1_쿼리_엔티티_그래프_테스트() {
+        em.clear();
+
+        List<Member> members = memberRepository.findAll();
+        for (Member member : members) {
+            System.out.println(member.getOrders().size());
+        }
+        assertThat(members.size()).isEqualTo(25);
     }
 }

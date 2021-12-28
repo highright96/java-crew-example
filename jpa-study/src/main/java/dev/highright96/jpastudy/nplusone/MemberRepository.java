@@ -7,10 +7,10 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface MemberRepository extends JpaRepository<Member, Long> {
 
-    @Query("select distinct m from Member m join fetch m.orders")
+    @Query("select m from Member m join fetch m.orders")
     List<Member> findAllJoinFetch();
 
     @EntityGraph(attributePaths = "orders")
-    @Query("select distinct m from Member m")
+    @Query("select m from Member m")
     List<Member> findAllEntityGraph();
 }
