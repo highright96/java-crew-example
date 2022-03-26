@@ -9,24 +9,24 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Slf4j
 @Component
-public class LoggingInterceptor implements HandlerInterceptor {
+public class CustomInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
         throws Exception {
-        log.info("LoggingInterceptor PreHandle");
+        log.info("CustomInterceptor PreHandle");
         return true;
     }
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
         ModelAndView modelAndView) throws Exception {
-        log.info("LoggingInterceptor PostHandle");
+        log.info("CustomInterceptor PostHandle");
     }
 
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
         throws Exception {
-        log.info("LoggingInterceptor AfterCompletion");
+        log.info("CustomInterceptor AfterCompletion");
     }
 }

@@ -1,6 +1,12 @@
 spring:
+  main:
+    allow-circular-references: true
   datasource:
     url: jdbc:h2:mem:springdb
     driver-class-name: org.h2.Driver
     username: sa
     password:
+
+logging:
+  level:
+    org.springframework.transaction: TRACE
