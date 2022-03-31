@@ -17,11 +17,16 @@ public class BookServiceTest {
     BookRepository bookRepository;
 
     @Test
-    void transaction_test() {
+    void transaction_test1() {
         List<String> bookNames = List.of("book1", "book2");
         bookService.addBooks(bookNames);
 
         List<Book> books = bookRepository.findAll();
         assertThat(books.get(0).isFlag()).isTrue();
+    }
+
+    @Test
+    void transaction_test() {
+        bookService.invoke();
     }
 }

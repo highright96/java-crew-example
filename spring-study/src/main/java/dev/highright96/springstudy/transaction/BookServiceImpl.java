@@ -12,6 +12,9 @@ public class BookServiceImpl implements BookService {
     private BookRepository bookRepository;
 
     @Autowired
+    private BookService2 bookService2;
+
+    @Autowired
     private BookService self;
 
     public void addBooks(List<String> bookNames) {
@@ -23,5 +26,13 @@ public class BookServiceImpl implements BookService {
         Book book = new Book(bookName);
         bookRepository.save(book);
         book.setFlag(true);
+    }
+
+    @Transactional
+    public void invoke() {
+        System.out.println("*** invoke start");
+        bookService2.insert1();
+        bookService2.insert2();
+        System.out.println("*** invoke end");
     }
 }
